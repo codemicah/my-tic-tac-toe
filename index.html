@@ -50,10 +50,9 @@
                 });
             })
             function joinGame(){
-                console.log($("#joinGame").attr("link"))
                 const data = {
                 type:"join",
-                username:$("#message").val(),
+                username:$("#message").val() || $("#joinGame").attr("link"),
                 message: "",
                 url: $("#joinGame").attr("link")
                 }
