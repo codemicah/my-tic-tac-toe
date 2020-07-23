@@ -45,7 +45,7 @@
             socket.on("games", (games)=>{
                 games.forEach(game => {
                     $("#games").text(" ")
-                    $("#games").append("<li><a href='/game"+ game.url + "'>" + game.url +  "</a>"  +  " by " +  game.players.player1 + `<a id= "joinGame" link="${game.url}">Join</a>` +"</li>")
+                    $("#games").append("<li><a href='/game"+ game.url + "'>" + game.url +  "</a>"  +  " by " +  game.players.player1 + ` <a id= "joinGame" link="${game.url}" href="/game${game.url}">Join</a>` +"</li>")
                 });
             })
             function joinGame(){
