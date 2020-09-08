@@ -1,7 +1,7 @@
 const express = require("express"),
-              http = require("http"),
-              socket = require("socket.io"),
-              ejs = require("ejs");
+  http = require("http"),
+  socket = require("socket.io"),
+  ejs = require("ejs");
 
 const e = require("express");
 const { disconnect } = require("process");
