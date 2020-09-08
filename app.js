@@ -1,7 +1,8 @@
 const express = require("express"),
-            http = require("http"),
-            socket = require("socket.io"),
-            ejs = require("ejs");
+              http = require("http"),
+              socket = require("socket.io"),
+              ejs = require("ejs");
+
 const e = require("express");
 const { disconnect } = require("process");
 
@@ -11,30 +12,30 @@ const io = socket(server);
 
 app.use(express.static("public"))
 const games = []
-app.get("/", (req, res)=>{
-    res.sendFile("index.html", { root: __dirname })
-})
+app.get("/", (req, res) => {
+  res.sendFile("index.html", { root: __dirname })
+});
 
-app.get("/game/:gameId", (req, res)=>{
-        console.log("User joined game")
-        console.log(games)
-        var gameUrl = "/"+req.params.gameId 
-        console.log(gameUrl)
-        if(games.length > 0){
-            games.forEach((game) => {
-              if (game.url == gameUrl) {
-                return res.render("game.ejs", {
-                  game,
-                });
-              }
-              else{
-                  res.redirect("back");
-              }
-            });
-        }else{
-            res.redirect("back");
-        }
-})
+app.get("/game/:gameId", (req, res) => {
+  console.log("User joined game")
+  console.log(games);
+  var gameUrl = "/" + req.params.gameId
+  console.log(gameUrl)
+  if (games.length > 0) {
+    games.forEach((game) => {
+      if (game.url == gameUrl) {
+        return res.render("game.ejs", {
+          game,
+        });
+      }
+      else {
+        res.redirect("back");
+      }
+    });
+  } else {
+    res.redirect("back");
+  }
+});
 
 
 io.on("connection", (socket) => {
@@ -81,6 +82,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(4000, ()=>{
-    console.log("server is running on 4000")
+server.listen(4000, () => {
+  console.log("server is running on 4000")
 });
